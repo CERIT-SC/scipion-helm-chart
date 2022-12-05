@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: scipion-firefox-$SUBST_NAME
+spec:
+  ttlSecondsAfterFinished: 0
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        name: scipion-firefox-$SUBST_NAME
+    spec:
+      containers:
+      - name: scipion-firefox-$SUBST_NAME
+        image: hub.cerit.io/josef_handl/scipion-firefox:latest
+        imagePullPolicy: Always
+        env:
+        - name: INSTANCE_NAME
+          value: "$SUBST_NAME"
+        - name: FIREFOX_ARGS
+          value: "$SUBST_FIREFOX_ARGS"
+        volumeMounts:
+        - name: scipion-vol-dataset-rw
+          mountPath: "/mnt/vol-dataset"
+        - name: scipion-vol-project-rw
+          mountPath: "/mnt/vol-project"
+        resources:
+          limits:
+            memory: 2Gi
+            cpu: 2
+        securityContext:
+          privileged: false
+          runAsUser: 1000
+          runAsGroup: 1000
+      restartPolicy: Never
+      volumes:
+       - name: scipion-vol-dataset-rw
+         persistentVolumeClaim:
+           claimName: pvc-scipion-vol-dataset-$SUBST_NAME-$SUBST_NAMESPACE-$SUBST_OD_DATASET_SPACEID
+
+       - name: scipion-vol-project-rw
+         persistentVolumeClaim:
+           claimName: pvc-scipion-vol-project-$SUBST_NAME-$SUBST_NAMESPACE-$SUBST_OD_PROJECT_SPACEID
+
