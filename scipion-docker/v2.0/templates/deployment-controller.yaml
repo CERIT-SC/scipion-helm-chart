@@ -22,7 +22,7 @@ spec:
       containers:
 
       - name: controller
-        image: hub.cerit.io/scipion/scipion-controller:latest
+        image: hub.cerit.io/scipion/scipion-controller:{{ .Values.instance.releaseChannel }}
         imagePullPolicy: Always
 
         securityContext:

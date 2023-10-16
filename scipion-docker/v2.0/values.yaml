@@ -1,5 +1,6 @@
 
 instance:
+  releaseChannel: "dev"
   prefix: "scipion"
   microk8s: false
   mincpu: 2

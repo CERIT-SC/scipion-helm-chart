@@ -22,7 +22,7 @@ spec:
       containers:
 
       - name: vnc
-        image: hub.cerit.io/scipion/scipion-vnc:latest
+        image: hub.cerit.io/scipion/scipion-vnc:{{ .Values.instance.releaseChannel }}
         imagePullPolicy: Always
 
         securityContext:
