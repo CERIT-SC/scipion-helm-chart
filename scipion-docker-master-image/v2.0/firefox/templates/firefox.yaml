@@ -51,10 +51,7 @@ spec:
           requests:
             cpu: 1
             memory: 1Gi
-        securityContext:
-          privileged: false
-          runAsUser: 1000
-          runAsGroup: 1000
+
       restartPolicy: Never
       volumes:
 
