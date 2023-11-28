@@ -62,10 +62,7 @@ spec:
           limits: # request is the same as limits if not specified
             cpu: {{ .Values.instance.maxcpu | quote }}
             memory: {{ .Values.instance.maxram | quote }}
-        securityContext:
-          privileged: false
-          runAsUser: 1000
-          runAsGroup: 1000
+
       restartPolicy: Never
       volumes:
 
