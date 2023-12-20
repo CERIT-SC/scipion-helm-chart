@@ -45,6 +45,10 @@ spec:
           value: {{ .Values.instance.prefix | quote }}
         - name: INSTANCE_LINK
           value: "https://{{ .Values.instance.prefix }}.{{ .Release.Name }}.{{ .Release.Namespace }}.dyn.cloud.e-infra.cz?autoconnect=true&resize=remote&password={{ .Values.vnc.vncPassword }}"
+        - name: OD_DATASET_SPACEID
+          value: {{ .Values.od.dataset.spaceId | quote }}
+        - name: OD_PROJECT_SPACEID
+          value: {{ .Values.od.project.spaceId | quote }}
         - name: OD_DATASET_SPACEIDSHORT
           value: {{ .Values.od.dataset.spaceIdShort | quote }}
         - name: OD_PROJECT_SPACEIDSHORT
