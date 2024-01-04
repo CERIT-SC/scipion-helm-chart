@@ -29,6 +29,10 @@ rules:
   resources: ["deployments"]
   verbs: ["get", "list", "create", "delete"]
 
+- apiGroups: [""]
+  resources: ["resourcequotas"]
+  verbs: ["get", "list"]
+
 # TODO this is not possible in current k8s installation or privileges
 # https://gitlab.ics.muni.cz/cryoem-dc/scipion-portal-old/-/issues/15
 #- apiGroups: [""]
